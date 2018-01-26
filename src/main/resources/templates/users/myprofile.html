@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <title></title>
+</head>
+
+<body>
+
+<header th:replace="layout :: site-header" />
+<main>
+    <div class="container">
+        <!--        <div class="user_info">
+                    <span th:text="${user.username}">Username</span>
+                    <span th:text="${user.fullName}">Full name</span>
+                    <span th:text="${user.aboutMe}">About me</span>
+                </div>-->
+        <h1 th:text="${user.username}">Username</h1>
+        <div class="user_posts">
+            <table class="table">
+                <thead><tr>
+                    <td>Full Name </td><td th:text="${user.fullName}"></td>
+                </tr>
+                <tr>
+                    <td>About Me..</td>
+                    <td th:text="${user.aboutMe}"></td></tr></thead>
+            </table>
+        </div>
+        <i><a th:href="@{/users/editProfile/{id}/(id=${user.id})}" class="btn btn-warning">Edit</a></i>
+
+    </div>
+
+</main>
+<footer th:replace="layout :: site-footer" />
+
+</body>
+
+</html>

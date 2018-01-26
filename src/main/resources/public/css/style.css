@@ -1,0 +1,175 @@
+@font-face {
+  font-family: 'Variane Script';
+  src: url("/css/fonts/Variane Script.ttf") format('truetype');
+  }
+
+
+.header {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid #ddd;
+  font-weight: 300;
+  font-size: 17px;
+  padding: 15px;
+  font-variant: small-caps;
+}
+
+/* Menu */
+
+.header .menu {
+  float: right;
+  list-style: none;
+  margin-top: 5px;
+}
+
+.menu > li {
+  display: inline;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.menu a {
+  color: #898989;
+}
+
+
+/*.imagesInIndex{
+    width : 70%;
+    height: 70%;
+}*/
+
+.img-img {
+    width: 80%;
+    height: 80%;
+}
+
+.img-edit{
+    width: 30%;
+    height: 30%;
+}
+/*.posts-cont{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}*/
+
+#logged-in-info {
+  float: right;
+  margin-top: 18px;
+}
+
+#logged-in-info form {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -50px;
+}
+
+.footer,
+.push {
+  height: 50px;
+}
+
+footer {
+   background: #eee;
+   padding: 5px;
+   margin: 10px 0;
+   text-align: center;
+}
+
+ul#messages li {
+  display: block;
+  width: 80%;
+  margin: 5px auto;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+ul#messages li.info {
+  background: #7f7;
+}
+
+ul#messages li.error {
+  background: #d00;
+  color: white;
+}
+
+.formError {
+    color: red;
+    font-style: italic;
+}
+
+
+
+main{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+textarea {
+   resize: none;
+   width:100px;
+}
+
+.banner-image{
+    background-image: url('/img/banner.png');
+    width: 100%;
+    height: 800px;
+}
+
+.reg-form{
+    padding-top:250px;
+}
+.log-form{
+    padding-top:250px;
+
+}
+
+#validate-status{
+    color:red;
+}
+.headwithfont{
+    font-family: 'Variane Script';
+    font-size: 50px;
+    color:#5385cd;
+
+}
+
+.go-top {
+	position: fixed;
+	bottom: 2em;
+	right: 2em;
+	text-decoration: none;
+	color: white;
+	background-color: #5385cd;
+	font-size: 12px;
+	padding: 2em;
+	display: none;
+	border-radius: 40px;
+}
+
+.go-top:hover {
+	background-color:#759dd7;
+	color:white;
+
+}
+.see-comments{
+    text-decoration:none;
+    font-weight: 600;
+}
+
+.see-comments:hover{
+    text-decoration:none;
+}
+/*
+
+
+#output{
+    width:50%;
+    height:50%;
+
+}*/

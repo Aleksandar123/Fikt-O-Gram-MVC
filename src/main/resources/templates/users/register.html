@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <title>Login</title>
+</head>
+
+<body>
+
+<header th:replace="layout :: site-header" />
+
+<div class="container">
+<div class="row">
+<div class="col-md-6 banner-image"></div>
+<div class="col-md-6 reg-form">
+
+<h1>Register to <span class="headwithfont">FIKT-o-GRAM</span></h1>
+
+<form action="#" th:action="@{/users/register}" th:object="${user}" method="post" >
+    <div class="input-group">
+
+        <input type="hidden" th:field="*{id}"  />
+        <span class="input-group-addon" id="username">Username</span>
+        <input type="text" th:field="*{username}" placeholder="" class="form-control" aria-describedby="username" id="username-box"/><br/>
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon" id="password">Password</span>
+        <input type="password" th:field="*{password}" placeholder="" class="form-control" aria-describedby="password" id="password1"/><br/>
+    </div>
+        <div class="input-group">
+            <span class="input-group-addon" id="repeatpassword">Repeat password</span>
+        <input type="password"  placeholder="" class="form-control" aria-describedby="repeatpassword" id="password2"/><br/>
+        </div>
+
+    <div class="input-group">
+        <span class="input-group-addon" id="fullNamme">Full Name</span>
+
+    <input type="text" th:field="*{fullName}" placeholder="(optional)" class="form-control" aria-describedby="fullName"/><br/>
+    </div>
+        <br/>
+    <input type="submit" aria-label="Create new account" value="Create new account" class="btn btn-default"/>
+    <input type="reset" value="Reset" class="btn btn-warning"/><br/>
+
+    <span class="formError" th:if="${#fields.hasErrors('username')}"  th:errors="*{username}">Invalid username</span>
+    <span class="formError" th:if="${#fields.hasErrors('password')}"  th:errors="*{password}">Invalid password</span>
+    <span class="formError" th:if="${#fields.hasErrors('fullName')}"  th:errors="*{fullName}">Invalid Name</span>
+    <span id="validate-status"></span>
+
+</form>
+</div>
+</div>
+</div>
+
+<footer th:replace="layout :: site-footer" />
+
+<script>
+    $('html, body').animate({
+            scrollTop: $('.reg-form').offset().top
+        }, 'slow');
+
+</script>
+
+</body>
+
+</html>

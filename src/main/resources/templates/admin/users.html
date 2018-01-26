@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <title>List all users</title>
+</head>
+
+<body>
+
+<header th:replace="layout :: site-header" />
+
+<main class="users">
+    <div class="container">
+        <div class="row">
+
+            <h1>All Users</h1>
+            <table class="table table-hover">
+                <tr>
+
+                    <th>Id</th><th>Username</th><th>Full Name</th><th>Enabled?</th><th>Number of posts</th><th>Action</th>
+
+                </tr>
+
+                <tr th:each="u : ${users}">
+                    <th th:text="${u.id}">ID</th>
+                    <td th:text="${u.username}">USERNAME</td>
+                    <td th:text="${u.fullName}">FULL NAME</td>
+                    <td th:text="${u.enabled}">ENABLED</td>
+                    <td th:text="${u.posts.size()}">0</td>
+                    <td><a href="#" th:href="@{/admin/user/{id}/(id=${u.id})}">Posts</a> /
+                        <a href="#" th:href="@{/users/editProfile/{id}/(id=${u.id})}">Profile</a>
+                    </td>
+
+
+
+
+                </tr>
+            </table>
+    </div></div>
+</main>
+
+
+<footer th:replace="layout :: site-footer" />
+
+</body>
+
+</html>

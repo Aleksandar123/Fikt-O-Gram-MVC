@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sd="http://www.w3.org/1999/xhtml">
+
+<head th:replace="layout :: site-head">
+    <title>FIKT-o-GRAM</title>
+    <link rel="stylesheet" href="/css/font-awesome.min.css" />
+</head>
+
+<body>
+
+<header th:replace="layout :: site-header" />
+
+<main class="posts">
+    <div class="container">
+    <div class="row">
+
+
+        <div th:each="p : ${allPosts}" class="col-md-6 col-md-offset-3">
+        <div class="date">
+            <br />
+            <a href="#" th:href="@{/posts/view/{id}/(id=${p.id})}"><i>Posted on</i>
+            <span th:text="${#dates.format(p.date, 'dd-MMM-yyyy')}">22-May-2016</span></a>
+            <i>by</i>
+            <a href="#" th:href="@{/users/profile/{id}/(id=${p.uploader.id})}"><span th:text="${p.uploader.username}">Anon</span></a>
+            <br />
+            <div class="image">
+                <a href="#" th:href="@{/posts/view/{id}/(id=${p.id})}"><img th:src="${p.image}" class="img-responsive" /></a>
+            <br />
+            <span th:text="${p.description}">Anon</span>
+                <br/>
+                <a class="see-comments" href="#" th:href="@{/posts/view/{id}/(id=${p.id})}"><span>See Comments</span></a>
+            <hr />
+            </div>
+
+        </div>
+        </div>
+    </div>
+
+    </div>
+
+<!-- Scroll to top-->
+
+</main>
+
+<a href="#" class="go-top"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+
+
+<script>
+$(document).ready(function() {
+			// Show or hide the sticky footer button
+			$(window).scroll(function() {
+				if ($(this).scrollTop() > 200) {
+					$('.go-top').fadeIn(200);
+				} else {
+					$('.go-top').fadeOut(200);
+				}
+			});
+
+			// Animate the scroll to top
+			$('.go-top').click(function(event) {
+				event.preventDefault();
+
+				$('html, body').animate({scrollTop: 0}, 300);
+			})
+		});
+</script>
+<footer th:replace="layout :: site-footer" />
+
+</body>
+
+</html>

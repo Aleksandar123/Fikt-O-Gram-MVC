@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <title>FIKT-o-GRAM</title>
+</head>
+
+<body>
+
+<header th:replace="layout :: site-header" />
+<main>
+<h1>Edit Post</h1>
+<form action="#" th:action="@{/posts/edit}" th:object="${post}" method="post" >
+    <input type="hidden" th:value="${post.id}" th:name="id"/>
+    <img th:src="${post.imgLocation}" class="img-responsive img-img" />
+    <input type="text" th:value="${post.description}" th:name="description"/><br/>
+    <input type="submit" value="Edit" />
+    <input type="submit" value="Delete Post" /><br/>
+</form>
+</main>
+
+<footer th:replace="layout :: site-footer" />
+
+</body>
+
+</html>

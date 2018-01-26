@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <title>FIKT-o-GRAM</title>
+
+</head>
+
+<body>
+
+<header th:replace="layout :: site-header" />
+
+<main class="posts">
+    <div class="container col-centered" >
+
+
+        <div class="row">
+            <div class="col-md-10">
+
+        <br />
+
+        <i>Posted on</i>
+        <span th:text="${#dates.format(post.date, 'dd-MMM-yyyy')}">22-May-2016</span>
+        <i>by</i>
+
+        <a href="#" th:href="@{/users/profile/{id}/(id=${post.uploader.id})}"><span th:text="${post.uploader.username}">Anon</span></a>
+        <br />
+        <div class="image">
+            <img th:src="${post.imgLocation}" class="img-responsive img-img" />
+            <br />
+            <span th:text="${post.description}"></span>
+            <hr />
+        </div>
+    </div>
+    </div>
+        <div class="row">
+            <div class="col-md-12 ">
+        <h2>Comments</h2>
+            <div th:each="c : ${comments}" class="comments">
+                <div class="comment">
+                <a th:href="@{/users/profile/{id}/(id=${c.commentor.id})}"><span th:text="${c.commentor.username}"></span></a> <span> said </span>
+                <div th:text="${c.comment}">Comment</div></div>
+                <hr/>
+            </div>
+        <div class="post-comment">
+            <form action="#" th:action="@{/posts/view/{id}/(id=${post.id})}" th:object="${comment}" method="post" >
+                <input type="hidden" th:field="*{id}" />
+                <textarea type="text" th:field="*{comment}" maxlength="140" placeholder="Enter your comment. (140 Characters)" spellcheck="true" class="form-control"></textarea>
+                <input type="hidden" th:field="*{commentor.username}" />
+                <input type="hidden" th:field="*{image.id}" /><br/>
+                <input type="submit"  value="Comment" class="btn btn-info"/>
+                <span class="formError" th:if="${#fields.hasErrors('comment')}"  th:errors="*{comment}">Invalid comment</span>
+                <span class="formError" th:if="${#fields.hasErrors('commentor.username')}"  th:errors="*{commentor.username}">Invalid username</span>
+                <span class="formError" th:if="${#fields.hasErrors('image.id')}"  th:errors="*{image.id}">Invalid Name</span>
+            </form>
+        </div>
+            </div>
+    </div></div>
+</main>
+
+
+<footer th:replace="layout :: site-footer" />
+
+</body>
+
+</html>

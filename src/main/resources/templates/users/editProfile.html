@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="layout :: site-head">
+    <title></title>
+</head>
+
+<body>
+
+<header th:replace="layout :: site-header" />
+<main>
+
+    <div  class="container">
+        <h1>Edit User</h1>
+
+
+<!--        <table class="table">
+            <tr>
+                <th>Username:</th>
+                <td th:field="${user.username}">Bill Gates</td>
+            </tr>
+            <tr>
+                <th>Full Name:</th>
+                <td th:field="${user.fullName}">Full Name</td>
+            </tr>
+            <tr>
+                <th>About Me:</th>
+                <td th:field="${user.aboutMe}">About me...</td>
+            </tr>
+            <tr>
+                <th>My Posts:</th>
+                <td><a th:href="@{/users/myposts/}" href="/users/myposts/">Posts</a></td>
+            </tr>
+        </table>-->
+
+        <form action="#" th:action="@{/users/editProfile}" th:object="${user}" method="post" class="form-horizontal">
+            <input type="hidden" th:field="*{id}" />
+            <label for="username"  class="control-label">Username : </label> <input type="text" th:field="*{username}" id="username" class="form-control" disabled="disabled"/> <br/>
+            <label for="fullname" class="control-label">Full Name : </label><input type="text" th:field="*{fullName}" id="fullname" class="form-control"/> <br />
+            <label for="aboutme" class="control-label">About Me : </label> <input type="text" th:field="*{aboutMe}" id="aboutme" class="form-control" maxlength="140" /><br />
+            <div sec:authorize="hasRole('ADMIN')"><label for="acc_locked" class="control-label">Account Enabled : </label> <input type="checkbox" name="active" th:field="*{enabled}" id="acc_locked" /><br /></div>
+            <input type="submit" value="Edit" class= "btn btn-warning" />
+        </form>
+    </div>
+
+
+</main>
+<footer th:replace="layout :: site-footer" />
+
+</body>
+
+</html>

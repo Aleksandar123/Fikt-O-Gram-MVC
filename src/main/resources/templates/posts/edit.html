@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <title>FIKT-o-GRAM</title>
+</head>
+
+<body>
+
+<header th:replace="layout :: site-header" />
+<main>
+    <div  class="container">
+    <h1>Edit Post</h1>
+
+
+    <table class="table">
+        <thead><tr><td>Image</td><td>Descrtiption</td><td>Action</td></tr></thead>
+       <!-- <form action="#" th:action="@{/posts/edit}" th:object="${post}" method="post" >-->
+        <input type="hidden" th:value="${post.id}" th:name="id"/>
+        <tr>
+        <td><img th:src="${post.imgLocation}" class="img-responsive img-edit" /></td>
+
+
+            <td>
+            <form action="#" th:action="@{/posts/edit}" th:object="${post}" method="post" >
+                <input type="hidden" th:field="*{id}" />
+                <input type="text" th:field="*{description}" />
+
+                <input type="hidden" th:field="*{imgLocation}" />
+                <input type="hidden" th:field="*{uploader.username}" />
+
+                <input type="submit" value="Edit" class= "btn btn-warning" />
+            </form>
+        </td>
+        <td>
+            <a th:href="@{/posts/delete/{id}(id=${post.id})}" class="btn btn-danger">Delete</a>
+        </td>
+
+        </tr>
+    <!--</form>-->
+    </table>
+    </div>
+</main>
+
+<footer th:replace="layout :: site-footer" />
+
+</body>
+
+</html>

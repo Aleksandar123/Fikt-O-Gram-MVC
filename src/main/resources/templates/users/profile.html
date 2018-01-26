@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <title></title>
+    <link rel="stylesheet" href="/css/magnific-popup.css" />
+
+</head>
+
+<body>
+
+<header th:replace="layout :: site-header" />
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-md-offset-2">
+                <img src="/img/profile_pic.gif" alt="profile-pic" class="img-circle" width="125px" height="125px"/>
+            </div>
+            <div class="col-md-4">
+            <h1 th:text="${user.username}">Username</h1>
+            <b th:text="${user.fullName}"></b>
+            <i th:text="${user.aboutMe}"></i>
+            </div>
+
+        </div>
+        <hr />
+        <div class="row">
+            <div class="parent-container">
+            <div class="col-md-3" th:each="p : ${posts}">
+                <a th:href="${p.imgLocation}"><img th:src="${p.image}" class="img-responsive img-thumbnail" width="70%" height="70%"/> </a>
+            </div>
+            </div>
+        </div>
+
+        </div>
+
+</main>
+<footer th:replace="layout :: site-footer" />
+<script src="/js/jquery.magnific-popup.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('.parent-container').magnificPopup({
+  delegate: 'a',
+  type:'image',
+  gallery:{
+    enabled:true
+  }});
+});
+
+</script>
+</body>
+
+</html>

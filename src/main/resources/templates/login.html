@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <title>Login</title>
+</head>
+
+<body>
+
+<header th:replace="layout :: site-header" />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 banner-image"></div>
+        <div class="col-md-6 log-form">
+<h1>Login in</h1>
+
+<div tiles:fragment="content">
+
+    <div th:if="${param.error}">
+        Invalid username and password.
+    </div>
+    <div th:if="${param.logout}">
+        You have been logged out.
+    </div>
+    <form th:action="@{/login}" method="post">
+        <div class="input-group">
+            <span class="input-group-addon" id="username">Username</span>
+            <input type="text" name="username" class="form-control" aria-describedby="username" id="username-box"/>
+        </div>
+
+        <div  class="input-group">
+            <span class="input-group-addon" id="password">Password</span>
+            <input type="password" name="password" class="form-control" aria-describedby="password"/>
+
+        </div><br/>
+        <div><input type="submit" value="Sign In" class="btn btn-default"/> or <a th:href="@{/users/register}" href="/users/register" class="btn btn-primary">Register</a></div></form>
+    </div>
+</div></div></div>
+<footer th:replace="layout :: site-footer" />
+
+</body>
+
+</html>
