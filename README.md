@@ -5,7 +5,7 @@ from above to build a clone of the popular social network Instagram. I used Spri
 application along side with PostgreSQL as database, Hibernate for ORM, Spring JPA for the relations, Hazelcast for
 caching and Thymeleaf for the view as Java template engine.
 
-[REST API Application](https://github.com/Aleksandar123/Fikt-O-Gram-REST)
+[REST API Application Repository](https://github.com/Aleksandar123/Fikt-O-Gram-REST)
 
 # Demo User View
 
