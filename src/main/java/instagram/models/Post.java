@@ -42,9 +42,9 @@ public class Post {
     }
 
 
-   // @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy = "image", orphanRemoval=true)
-    private Set<Comment> comments = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "image")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Set<Comment> comments;
 
     public Long getId() {
         return id;
